@@ -17,6 +17,38 @@ Then I think you can get an error (why always error) saying "no input files", th
 Step II:
 Open MATLAB, type:
 
-mex -setup
+	mex -setup
 
 Then it will prompt you to choose a compiler, in most cases, you have only one choice. This action will write or overwrite a file in you "~/.matlab/20XXx/mexopts.sh".
+
+Now in Terminal, type:(suppose you have MATLAB 2012a)
+
+	cd ~/.matlab/2012a/
+	chmod a+w mexopts.sh
+	open mexopts.sh
+
+Then you scroll down to the button, you can see the session for "maci64" architecture. You can notice that in the CC and CXX variables, there is a "-4.2" tail. Just delete them, leaving them "gcc" and "g++".
+
+Wait, did you notice the SDKROOT='/Developer/SDKs/MacOSX10.6.sdk'? Yes, that's another problem, Apple is really a bad boy, they hide the SDKs in the Xcode Application, very very deep inside. So you have to explore something, on my machine it is like this SDKROOT='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk', you can use Terminal to follow the path and confirm whether it really contains a "usr" folder, and in this usr folder you will see "gcc" in the bin and some header files in the "include"; you can also change "10.6.sdk" to "10.7.sdk", or maybe "10.8.sdk" in the near future.
+
+Then save it, revoke the writing priority.
+	chmod a-w mexopts.sh
+
+Step III:
+Option 1:
+Now I think you are close to success. Open Matlab, go to LibSVM matlab folder, then, type
+	make
+
+Works?
+
+Option 2:
+Another option is to compile them using the Makefile, then you can compile them in Terminal.
+
+You should change the MATLABDIR variable at the beginning of the file. For Mac, it often installs your MATLAB20XXx in /Applications/MATLAB_R20XXx.app, if you are not sure, you can explore it in Terminal or finder, make sure that you can reach bin folder wihich contains matlab's main program.
+
+Then in Terminal, type
+	make
+or in MATLAB command line, type
+	!make
+
+Works?

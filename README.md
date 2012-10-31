@@ -59,4 +59,4 @@ or in MATLAB command line, type
 
 Works?
 
-Had you any questions, please send an email to tz2163(little rat)columbia(punkt)edu.
+Had you any questions, please send an email to tz2163(rat)caa(punkt)columbia(punkt)edu.

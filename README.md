@@ -5,7 +5,8 @@ Actually, there is no need to use the manual here, because current version of MA
 
 	make
 
-(Unnecessary below this line)Compiled Matlab Execution file of LibSVM for MacOSX
+# Unnecessary below this line
+Compiled Matlab Execution file of LibSVM for MacOSX
 
 I know that most of you have some problems when compiling LibSVM with Mac. Especially in recent releases (XCode 4.3) Apple changed XCode into an app rather than a toolset, new MacOS and newly installed XCode won't give you an installed command line tools (such as gcc, git), things are kind of complicated.
 
